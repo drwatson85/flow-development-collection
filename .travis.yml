@@ -79,7 +79,6 @@ before_install:
 install:
   - composer self-update --2 -q
   - if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
-  - composer update --no-progress --no-interaction
   - php Build/BuildEssentials/TravisCi/ComposerManifestUpdater.php .
   - composer update --no-progress --no-interaction
 before_script:
