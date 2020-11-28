@@ -79,7 +79,8 @@ before_install:
 install:
   - composer self-update --2 -q
   - if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
-  - php Build/BuildEssentials/TravisCi/ComposerManifestUpdater.php .
+  - composer config repositories.flow git ../../flow-development-collection
+  - composer require --no-update neos/flow-development-collection "dev-travis as dev-master"
   - composer update --no-progress --no-interaction
 before_script:
   - echo 'date.timezone = "Africa/Tunis"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
